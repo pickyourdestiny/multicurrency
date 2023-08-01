@@ -21,18 +21,18 @@ function App() {
     setValue(e.value)
   }, [])
 
-  const changeCurrency = (e) => {
+  const changeCurrency = useCallback((e) => {
     if (e.value) {
       setCurrencyFormat((previousValue) => ({
         ...previousValue,
         currency: e.value.cc,
       }))
     }
-  }
+  }, [])
 
-  const setPopOverInstance = (e) => {
+  const setPopOverInstance = useCallback((e) => {
     popOverInstance.current = e.component
-  }
+  }, [])
 
   const renderSelectBox = useCallback(() => {
     function closePopOver() {
@@ -68,7 +68,7 @@ function App() {
         />
       </>
     )
-  }, [])
+  }, [changeCurrency])
 
   return (
     <div className='App'>
